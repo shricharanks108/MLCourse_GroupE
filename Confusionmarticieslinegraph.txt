@@ -1,0 +1,32 @@
+# counfusion matricies for bigram, unigram, unigram tf-idf. trigram, trigram tf-idf
+
+bc_train_score, bc_valid_score, bc_clf = new_train_and_show_scores(X_train_bigram, y_train, '----- Bigram Counts -----')
+btfidf_train_score, btfidf_valid_score, btfidf_clf = new_train_and_show_scores(X_train_bigram_tf_idf, y_train, '----- Bigram Tf-Idf -----')
+
+uc_train_score, uc_valid_score, uc_clf = new_train_and_show_scores(X_train_unigram, y_train, '----- Unigram Counts -----')
+utfidf_train_score, utfidf_valid_score, utfidf_clf = new_train_and_show_scores(X_train_unigram_tf_idf, y_train, '----- Unigram Tf-Idf -----')
+
+tc_train_score, tc_valid_score, tc_clf = new_train_and_show_scores(X_train_trigram, y_train, '----- Trigram Counts -----')
+ttfidf_train_score, ttfidf_valid_score, ttfidf_clf = new_train_and_show_scores(X_train_trigram_tf_idf, y_train, '----- Trigram Tf-Idf -----')
+
+
+
+
+
+
+
+
+
+print ("Training score for the six approaches:")
+ax1 = sns.lineplot(
+    x= ['Unigram Count', 'Unigram tf-idf', 'Bigram Count', 'Bigram tf-idf'],
+    y= [uc_train_score, utfidf_train_score, bc_train_score, btfidf_train_score, tc_train_score,  ttfidf_train_score])
+ax1.set(ylim=(0.85, 1.00))
+plt.show()
+
+print ("Validation score for the four approaches:")
+ax2 = sns.lineplot(
+    x= ['Unigram Count', 'Unigram tf-idf', 'Bigram Count', 'Bigram tf-idf', 'Trigram Count',  'Trigram tf-idf'],
+    y= [uc_valid_score, utfidf_valid_score, bc_valid_score, btfidf_valid_score,  tc_valid_score,  ttfidf_valid_score])
+ax2.set(ylim=(0.85, 1.00))
+plt.show()
